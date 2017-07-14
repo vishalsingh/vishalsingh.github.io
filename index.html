@@ -27,13 +27,31 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="//assets.adobedtm.com/af395da6b02bcc888dc3ff89d221f89a86b6197e/satelliteLib-1e72ed0d01ad1b590c7c0a780051e238fa1dd078-staging.js"></script>
-</head>
+    <script>
+        var publishPostPageData = function(name, obj) {
+            console.log("linkkkkkk", obj);
+            for (var attrname in obj) {
+                if (obj.hasOwnProperty(attrname)) {
+                    pageDataLayer[attrname] = obj[attrname];
+                }
+            }
+            try {
+                obj = JSON.stringify(obj, false, 4);
+                console.log(name, obj);
+
+            } catch (e) {}
+        };
+    </script>
+
+    </head>
 
 <body>
 
     <a id='link1' href='#' dtmname="Topnav:link1">Track Link1</a>
     <a id='link2' href='#' dtmname="Topnav:link2">Track Link2</a>
     <a id='link3' href='#'>Wihout dtm name link</a>
+    <a id='link4' onclick="dtmScript('Topnav:link4');">Track Link4</a>
+    <a id='link5' onclick="dtmScript('Topnav:link5');">Track Link5</a>
     
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -302,6 +320,16 @@
                       website: "Acquisition"
 	                }
          </script>
+        <script>
+           function dtmScript(name) {
+             publishPostPageData('linkName', {
+                actions: {
+                    linkName: name
+                }
+            });
+            _satellite.track('linkTrack');
+           }    
+        </script>
 
         <!-- Footer -->
         <footer>
