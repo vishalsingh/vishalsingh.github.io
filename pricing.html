@@ -27,6 +27,29 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="//assets.adobedtm.com/af395da6b02bcc888dc3ff89d221f89a86b6197e/satelliteLib-1e72ed0d01ad1b590c7c0a780051e238fa1dd078-staging.js"></script>
+    <script> 
+    
+        var pageDataLayer = {};
+    
+    </script>
+    
+    
+        <script>
+        var publishPostPageData = function(name, obj) {
+            console.log("linkkkkkk", obj);
+            for (var attrname in obj) {
+                if (obj.hasOwnProperty(attrname)) {
+                    pageDataLayer[attrname] = obj[attrname];
+                }
+            }
+            try {
+                obj = JSON.stringify(obj, false, 4);
+                console.log(name, obj);
+
+            } catch (e) {}
+        };
+    </script>
+
 
 </head>
 
@@ -173,7 +196,7 @@
                         <li class="list-group-item"><strong>Unlimited</strong> Email Accounts</li>
                         <li class="list-group-item"><strong>1000GB</strong> Disk Space</li>
                         <li class="list-group-item"><strong>10000GB</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Sign Up!</a></li>
+                        <li class="list-group-item"><a href="#myModal" onclick="trackWizardSteps('Step1');" role="button" class="btn btn-primary" data-toggle="modal">Sign Up!</a></li>
                         </li>
                     </ul>
                 </div>
@@ -220,10 +243,10 @@
          <div class="navbar">
             <div class="navbar-inner">
                   <ul class="nav nav-pills">
-                     <li class="active"><a href="#step1" data-toggle="tab" data-step="1">Step 1</a></li>
-                     <li><a href="#step2" data-toggle="tab" data-step="2">Step 2</a></li>
-                     <li><a href="#step3" data-toggle="tab" data-step="3">Step 3</a></li>
-                     <li><a href="#step4" data-toggle="tab" data-step="4">Step 4</a></li>
+                     <li class="active"><a href="#step1" onclick="trackWizardSteps('Step1');" data-toggle="tab" data-step="1">Step 1</a></li>
+                     <li><a href="#step2" onclick="trackWizardSteps('Step2');" data-toggle="tab" data-step="2">Step 2</a></li>
+                     <li><a href="#step3" onclick="trackWizardSteps('Step3');" data-toggle="tab" data-step="3">Step 3</a></li>
+                     <li><a href="#step4" onclick="trackWizardSteps('Step4');" data-toggle="tab" data-step="4">Step 4</a></li>
                   </ul>
             </div>
          </div>
@@ -243,9 +266,9 @@
                   <label>Enter Response</label>
                   <input class="form-control input-lg">
               </div>
-              <a class="btn btn-default next" href="#">Continue</a>
+              <a class="btn btn-default next" onclick="trackWizardSteps('Step2');" href="#">Continue</a>
             </div>
-            <div class="tab-pane fade" id="step2">
+            <div class="tab-pane fade"  id="step2">
                <div class="well"> 
                   <label>Security Question 2</label>
                   <select class="form-control  input-lg">
@@ -258,11 +281,11 @@
                   <label>Enter Response</label>
                   <input class="form-control input-lg">
                </div>
-               <a class="btn btn-default next" href="#">Continue</a>
+               <a class="btn btn-default next" onclick="trackWizardSteps('Step3');" href="#">Continue</a>
             </div>
             <div class="tab-pane fade" id="step3">
               <div class="well"> <h2>Step 3</h2> Add another step here..</div>
-               <a class="btn btn-default next" href="#">Continue</a>
+               <a class="btn btn-default next" onclick="trackWizardSteps('Step4');" href="#">Continue</a>
             </div>
             <div class="tab-pane fade" id="step4">
               <div class="well"> <h2>Step 4</h2> You're Done!</div>
@@ -280,7 +303,20 @@
   </div>
 </div>
 
-
+<script>
+           function trackWizardSteps(stepName) {
+             publishPostPageData('wizardStepTrack', {
+                        pageName: stepName,
+                      siteSectionL1: "Wizard Steps",
+                      siteSectionL2: "",
+                      siteSectionL3: "",
+                      businessUnit: "MB",
+                      website: "Acquisition"
+                
+            });
+            _satellite.track('wizardStepTrack');
+           }    
+        </script>
 
         
         <hr>
