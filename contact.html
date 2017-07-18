@@ -27,19 +27,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <script src="//assets.adobedtm.com/af395da6b02bcc888dc3ff89d221f89a86b6197e/satelliteLib-1e72ed0d01ad1b590c7c0a780051e238fa1dd078-staging.js"></script>
-     <script> 
-    
-        var pageDataLayer = {
-        
-                  pageName: "ContactUs",
-                      siteSectionL1: "ContactForm",
-                      siteSectionL2: "",
-                      siteSectionL3: "",
-                      businessUnit: "MB",
-                      website: "Acquisition"
-        };
-    
-    </script>
+  
     
     
         <script>
@@ -244,16 +232,7 @@
 
         </div>
         
-      
-<script>
-           function trackErrorField(name) { 
-             publishPostPageData('trackErrorField', {
-                        errorFields= name,
-            
-            });
-            _satellite.track('trackErrorField');
-           }    
-        </script>
+
 
         
         
@@ -261,7 +240,34 @@
         <!-- /.row -->
 
         <hr>
-
+   <script> 
+    
+        var pageDataLayer = {
+        
+                  pageName: "ContactUs",
+                      siteSectionL1: "ContactForm",
+                      siteSectionL2: "",
+                      siteSectionL3: "",
+                      businessUnit: "MB",
+                      website: "Acquisition"
+        };
+    
+    </script>
+              
+<script>
+           function trackErrorField(name) { 
+               alert ("checking");
+               
+             publishPostPageData('trackErrorField', {
+                        errorFields= name,
+            
+            });
+            _satellite.track('trackErrorField');
+           }    
+        </script>
+        
+        
+        
         <!-- Footer -->
         <footer>
             <div class="row">
